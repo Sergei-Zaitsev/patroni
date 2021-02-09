@@ -299,7 +299,7 @@ class ConfigHandler(object):
         self._postgresql_conf_mtime = None
         self._postgresql_base_conf_name = config_base_name + '.base.conf'
         self._postgresql_base_conf = os.path.join(self._config_dir, self._postgresql_base_conf_name)
-        self._pg_hba_conf = os.path.join(self._config_dir, 'qhb_hba')
+        self._pg_hba_conf = os.path.join(self._config_dir, 'qhb_hba.conf')
         self._pg_ident_conf = os.path.join(self._config_dir, 'qhb_ident.conf')
         self._recovery_conf = os.path.join(postgresql.data_dir, 'recovery.conf')
         self._recovery_conf_mtime = None
