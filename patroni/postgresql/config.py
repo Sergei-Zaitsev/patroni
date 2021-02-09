@@ -294,18 +294,18 @@ class ConfigHandler(object):
     def __init__(self, postgresql, config):
         self._postgresql = postgresql
         self._config_dir = os.path.abspath(config.get('config_dir') or postgresql.data_dir)
-        config_base_name = config.get('config_base_name', 'postgresql')
+        config_base_name = config.get('config_base_name', 'qhb')
         self._postgresql_conf = os.path.join(self._config_dir, config_base_name + '.conf')
         self._postgresql_conf_mtime = None
         self._postgresql_base_conf_name = config_base_name + '.base.conf'
         self._postgresql_base_conf = os.path.join(self._config_dir, self._postgresql_base_conf_name)
-        self._pg_hba_conf = os.path.join(self._config_dir, 'pg_hba.conf')
-        self._pg_ident_conf = os.path.join(self._config_dir, 'pg_ident.conf')
+        self._pg_hba_conf = os.path.join(self._config_dir, 'qhb_hba')
+        self._pg_ident_conf = os.path.join(self._config_dir, 'qhb_ident.conf')
         self._recovery_conf = os.path.join(postgresql.data_dir, 'recovery.conf')
         self._recovery_conf_mtime = None
         self._recovery_signal = os.path.join(postgresql.data_dir, 'recovery.signal')
         self._standby_signal = os.path.join(postgresql.data_dir, 'standby.signal')
-        self._auto_conf = os.path.join(postgresql.data_dir, 'postgresql.auto.conf')
+        self._auto_conf = os.path.join(postgresql.data_dir, 'qhb.auto.conf')
         self._auto_conf_mtime = None
         self._pgpass = os.path.abspath(config.get('pgpass') or os.path.join(os.path.expanduser('~'), 'pgpass'))
         if os.path.exists(self._pgpass) and not os.path.isfile(self._pgpass):
