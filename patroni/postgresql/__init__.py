@@ -62,7 +62,7 @@ class Postgresql(object):
         self.name = config['name']
         self.scope = config['scope']
         self._data_dir = config['data_dir']
-        self._database = config.get('database', 'postgres')
+        self._database = config.get('database', 'qhb')
         self._version_file = os.path.join(self._data_dir, 'PG_VERSION')
         self._pg_control = os.path.join(self._data_dir, 'global', 'pg_control')
         self._major_version = self.get_major_version()

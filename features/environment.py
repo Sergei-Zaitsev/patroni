@@ -248,7 +248,7 @@ class PatroniController(AbstractController):
 
     def _get_pid(self):
         try:
-            pidfile = os.path.join(self._data_dir, 'postmaster.pid')
+            pidfile = os.path.join(self._data_dir, 'qhbmaster.pid')
             if not os.path.exists(pidfile):
                 return None
             return int(open(pidfile).readline().strip())
