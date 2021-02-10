@@ -55,7 +55,7 @@ class PostmasterProcess(psutil.Process):
         """
         pid_line_names = ['pid', 'data_dir', 'start_time', 'port', 'socket_dir', 'listen_addr', 'shmem_key']
         try:
-            with open(os.path.join(data_dir, 'postmaster.pid')) as f:
+            with open(os.path.join(data_dir, 'qhbmaster.pid')) as f:
                 return {name: line.rstrip('\n') for name, line in zip(pid_line_names, f)}
         except IOError:
             return {}
@@ -224,7 +224,7 @@ class PostmasterProcess(psutil.Process):
                 # Important!!! Unlink of postmaster.pid isn't an option, because it has a lot of nasty race conditions.
                 # Luckily there is a workaround to this problem, we can pass the pid from postmaster.pid
                 # in the `PG_GRANDPARENT_PID` environment variable and postmaster will ignore it.
-                logger.info("Telling pg_ctl that it is safe to ignore postmaster.pid for process %s", proc.pid)
+                logger.info("Telling pg_ctl that it is safe to ignore postmaster.pid/qhbmaster.pid for process %s", proc.pid)
                 env['PG_GRANDPARENT_PID'] = str(proc.pid)
         except psutil.NoSuchProcess:
             pass
